@@ -38,7 +38,7 @@ app.use("/", require("./routes/index"));
 app.use("/register", require("./routes/register"));
 app.use("/login", require("./routes/login"));
 app.use("/recoverpass", require("./routes/recoverPass"));
-
+app.use("/newpass", require("./routes/recoverPass"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

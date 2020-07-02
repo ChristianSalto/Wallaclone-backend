@@ -20,7 +20,6 @@ usersSchema.statics.hashPassword = function (plainPassword) {
 // };
 
 usersSchema.statics.sendEmail = function (from, to, subject, body) {
-  console.log(from, subject, body, to);
   // enviar el correo:
   return nodemailerTransport.sendMail({
     from: from,
