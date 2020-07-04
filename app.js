@@ -40,6 +40,8 @@ app.use("/login", require("./routes/login"));
 app.use("/recoverpass", require("./routes/recoverPass"));
 app.use("/newpass", require("./routes/recoverPass"));
 
+app.use("/adsview", require("./routes/adsView"));
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
