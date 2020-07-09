@@ -2,7 +2,7 @@
   {
     "img": "ps5.jpg",
     "name": "play staton 5",
-    "tags": ["game"],
+    "tags": ["work"],
     "description": "Busco play 5 para estas navidades",
     "autor": "chr",
     "date": "2020/06/02",
@@ -12,7 +12,7 @@
   {
     "img": "camiseta.jpg",
     "name": "camiseta real madrid",
-    "tags": ["game", "sport"],
+    "tags": ["work", "mobile"],
     "description": "vendo camiseta del madrid",
     "autor": "keko",
     "date": "2020/01/01",
@@ -22,7 +22,7 @@
   {
     "img": "car.jpg",
     "name": "ferrari",
-    "tags": ["drive"],
+    "tags": ["lifestyle"],
     "description": "ferrari de carreras",
     "autor": "fernando alonso",
     "date": "2019/12/24",
@@ -32,7 +32,7 @@
   {
     "img": "game.jpg",
     "name": "seven wonder",
-    "tags": ["game"],
+    "tags": ["lifestyle"],
     "description": "busco juego de mesa seven wonder",
     "autor": "borja",
     "date": "2018/02/15",
@@ -42,7 +42,7 @@
   {
     "img": "ps5.jpg",
     "name": "play staton 5",
-    "tags": ["game"],
+    "tags": ["work", "mobile", "lifestyle"],
     "description": "Busco play 5 para estas navidades",
     "autor": "chr",
     "date": "2020/06/02",
@@ -52,7 +52,7 @@
   {
     "img": "camiseta.jpg",
     "name": "camiseta real madrid",
-    "tags": ["game", "sport"],
+    "tags": ["lifestyle", "mobile"],
     "description": "vendo camiseta del madrid",
     "autor": "keko",
     "date": "2020/01/01",
@@ -62,7 +62,7 @@
   {
     "img": "car.jpg",
     "name": "ferrari",
-    "tags": ["drive"],
+    "tags": ["motor"],
     "description": "ferrari de carreras",
     "autor": "fernando alonso",
     "date": "2019/12/24",
@@ -72,7 +72,7 @@
   {
     "img": "game.jpg",
     "name": "seven wonder",
-    "tags": ["game"],
+    "tags": ["motor","work"],
     "description": "busco juego de mesa seven wonder",
     "autor": "borja",
     "date": "2018/02/15",

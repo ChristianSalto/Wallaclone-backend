@@ -41,6 +41,8 @@ app.use("/recoverpass", require("./routes/recoverPass"));
 app.use("/newpass", require("./routes/recoverPass"));
 
 app.use("/adsview", require("./routes/adsView"));
+app.use("/details", require("./routes/details"));
+app.use("/privatezone", jwtAuth(), require("./routes/privateZone"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

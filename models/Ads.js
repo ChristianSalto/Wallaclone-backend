@@ -24,8 +24,8 @@ const addSchema = mongoose.Schema({
 //   return query.exec();
 // };
 
-addSchema.statics.list = function (filtro, limit, sort) {
-  const query = Ads.find(filtro);
+addSchema.statics.list = function (filter, limit, sort) {
+  const query = Ads.find(filter);
   query.limit(limit);
   query.sort(sort);
   return query.exec();

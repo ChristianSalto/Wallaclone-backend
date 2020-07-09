@@ -19,7 +19,7 @@ router.post("/", async (req, res, next) => {
       // next(error);
       res.send({
         success: false,
-        path: '/login',
+        path: "/login",
         msj: "Invalid credentials",
       });
       return;
@@ -31,6 +31,7 @@ router.post("/", async (req, res, next) => {
 
     const newUser = {
       success: true,
+      id: user._id,
       username: user.username,
       email: user.email,
       token: token,
@@ -38,7 +39,6 @@ router.post("/", async (req, res, next) => {
     };
 
     res.json(newUser);
-
   } catch (err) {
     next(err);
   }

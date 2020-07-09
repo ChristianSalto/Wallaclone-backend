@@ -7,24 +7,29 @@ const Ads = require("../models/Ads");
 
 router.get("/", async (req, res, next) => {
   try {
-    const name = req.query.name;
+    const { name, tags, price } = JSON.parse(req.query.params);
     const date = req.query.sort;
     const limit = parseInt(4);
-    const filtro = {};
+    const filter = {};
     const sort = {};
 
-    if (name !== "undefined") {
-      filtro.name = new RegExp(`^${name}`, "i");
+    if (name !== "") {
+      filter.name = new RegExp(`^${name}`, "i");
     }
 
     if (date !== "false" && date !== "undefined") {
       sort.date = -1;
-      console.log("estoy en date " + date);
     }
 
-    console.log(sort);
-    const ads = await Ads.list(filtro, limit, sort);
-    console.log(ads);
+    if (tags !== "default" && tags !== "") {
+      filter.tags = tags;
+    }
+
+    if (price !== "") {
+      filter.price = { $lte: price };
+    }
+    const ads = await Ads.list(filter, limit, sort);
+
     if (ads.length === 0) {
       res.send({
         ads,
@@ -40,5 +45,20 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+
+// router.get("/:id", async (req, res, next) => {
+//   try {
+//     const id_cards = req.query.id;
+//     const filterId = {};
+//     filterId._id = id_cards;
+//     const ads = await Ads.list(filterId);
+//     res.send({
+//       ads,
+//       msj: "",
+//     });
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 module.exports = router;
