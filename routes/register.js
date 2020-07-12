@@ -25,10 +25,13 @@ router.post("/", async (req, res, next) => {
     user.password = await Users.hashPassword(user.password);
     const userSave = await user.save();
 
-
     res.status(201).send({
       success: true,
-      result: userSave,
+      result: {
+        username: userSave.username,
+        email: userSave.email,
+        id: userSave._id,
+      },
       msj: "Usuario guardado con exito",
     });
   } catch (err) {

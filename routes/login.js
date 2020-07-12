@@ -19,7 +19,12 @@ router.post("/", async (req, res, next) => {
       // next(error);
       res.send({
         success: false,
-        path: "/login",
+        result: {
+          username: user,
+          email: user,
+          id: user,
+          token: null,
+        },
         msj: "Invalid credentials",
       });
       return;
@@ -31,10 +36,12 @@ router.post("/", async (req, res, next) => {
 
     const newUser = {
       success: true,
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      token: token,
+      result: {
+        username: user.username,
+        email: user.email,
+        id: user._id,
+        token: token,
+      },
       msj: "Successfully logged in",
     };
 

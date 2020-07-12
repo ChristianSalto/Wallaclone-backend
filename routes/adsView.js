@@ -32,13 +32,13 @@ router.get("/", async (req, res, next) => {
 
     if (ads.length === 0) {
       res.send({
-        ads,
+        result: ads,
         msj: "There aren't ads with these criteria!!!!",
       });
       return;
     }
     res.send({
-      ads,
+      result: ads,
       msj: "",
     });
   } catch (err) {
