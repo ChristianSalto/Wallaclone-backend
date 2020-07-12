@@ -81,4 +81,24 @@ router.put("/", async (req, res, next) => {
   }
 });
 
+router.put("/editads", async (req, res, next) => {
+  try {
+    const _id = req.body.id;
+    const adsUpdate = req.body.params;
+
+    const adsUpdated = await Ads.findOneAndUpdate({ _id: _id }, adsUpdate, {
+      new: true,
+      useFindAndModify: false,
+    });
+
+    res.send({
+      success: true,
+      result: adsUpdated,
+      msj: "Update successful",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
