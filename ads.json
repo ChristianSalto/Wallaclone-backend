@@ -10,7 +10,7 @@
     "status": "busco"
   },
   {
-    "img": "camiseta.jpg",
+    "img": "no-photo.png",
     "name": "camiseta real madrid",
     "tags": ["work", "mobile"],
     "description": "vendo camiseta del madrid",
@@ -20,7 +20,7 @@
     "status": "vendo"
   },
   {
-    "img": "car.jpg",
+    "img": "no-photo.png",
     "name": "ferrari",
     "tags": ["lifestyle"],
     "description": "ferrari de carreras",
@@ -30,7 +30,7 @@
     "status": "vendo"
   },
   {
-    "img": "game.jpg",
+    "img": "no-photo.png",
     "name": "seven wonder",
     "tags": ["lifestyle"],
     "description": "busco juego de mesa seven wonder",
@@ -50,7 +50,7 @@
     "status": "busco"
   },
   {
-    "img": "camiseta.jpg",
+    "img": "no-photo.png",
     "name": "camiseta real madrid",
     "tags": ["lifestyle", "mobile"],
     "description": "vendo camiseta del madrid",
@@ -60,7 +60,7 @@
     "status": "vendo"
   },
   {
-    "img": "car.jpg",
+    "img": "no-photo.png",
     "name": "ferrari",
     "tags": ["motor"],
     "description": "ferrari de carreras",
@@ -70,7 +70,7 @@
     "status": "vendo"
   },
   {
-    "img": "game.jpg",
+    "img": "no-photo.png",
     "name": "seven wonder",
     "tags": ["motor","work"],
     "description": "busco juego de mesa seven wonder",

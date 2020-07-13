@@ -3,6 +3,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const multer = require("multer");
+const upload = multer({ dest: path.join(__dirname, "public/img/") });
 
 const cors = require("cors");
 
@@ -24,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+const type = upload.single("img");
 const jwtAuth = require("./middleware/jwtAuth");
 
 /**
@@ -42,7 +45,7 @@ app.use("/newpass", require("./routes/recoverPass"));
 
 app.use("/adsview", require("./routes/adsView"));
 app.use("/details", require("./routes/details"));
-app.use("/privatezone", jwtAuth(), require("./routes/privateZone"));
+app.use("/privatezone", type, jwtAuth(), require("./routes/privateZone"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

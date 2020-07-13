@@ -5,6 +5,7 @@ const router = express();
 
 const Ads = require("../models/Ads");
 const Users = require("../models/Users");
+const storeWithOriginalName = require("../middleware/storeWithOriginalName");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -37,7 +38,8 @@ router.delete("/", async (req, res, next) => {
     await Users.deleteOne({ _id: _id });
 
     res.send({
-      path: "/",
+      success: true,
+      msj: "Usuario borrado",
     });
   } catch (err) {
     next(err);
@@ -81,10 +83,17 @@ router.put("/", async (req, res, next) => {
   }
 });
 
-router.put("/editads", async (req, res, next) => {
+router.put("/editads?", async (req, res, next) => {
   try {
-    const _id = req.body.id;
-    const adsUpdate = req.body.params;
+    const _id = req.query.id;
+    const adsUpdate = req.body;
+
+    if (req.file === undefined) {
+      adsUpdate.img = "no-photo.jpg";
+    } else {
+      const { fileName } = storeWithOriginalName(req.file);
+      adsUpdate.img = fileName;
+    }
 
     const adsUpdated = await Ads.findOneAndUpdate({ _id: _id }, adsUpdate, {
       new: true,
@@ -95,6 +104,44 @@ router.put("/editads", async (req, res, next) => {
       success: true,
       result: adsUpdated,
       msj: "Update successful",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/createads?", async (req, res, next) => {
+  try {
+    const adsUpdate = req.body;
+
+    if (req.file === undefined) {
+      adsUpdate.img = "no-photo.jpg";
+    } else {
+      const { fileName } = storeWithOriginalName(req.file);
+      adsUpdate.img = fileName;
+    }
+
+    const ads = new Ads(adsUpdate);
+    const adsSaved = await ads.save();
+
+    res.send({
+      success: true,
+      result: adsSaved,
+      msj: "Update successful",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete("/deleteads", async (req, res, next) => {
+  try {
+    const _id = req.body.id;
+    await Ads.deleteOne({ _id: _id });
+
+    res.send({
+      success: true,
+      msj: "Anuncio borrado",
     });
   } catch (err) {
     next(err);
