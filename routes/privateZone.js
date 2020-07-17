@@ -6,6 +6,7 @@ const router = express();
 const Ads = require("../models/Ads");
 const Users = require("../models/Users");
 const storeWithOriginalName = require("../middleware/storeWithOriginalName");
+const jimpImage = require("../middleware/jimpImage");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -35,7 +36,10 @@ router.get("/", async (req, res, next) => {
 router.delete("/", async (req, res, next) => {
   try {
     const _id = req.body.id;
+    const user = req.body.user;
+
     await Users.deleteOne({ _id: _id });
+    await Ads.deleteOne({ autor: user });
 
     res.send({
       success: true,
@@ -89,11 +93,32 @@ router.put("/editads?", async (req, res, next) => {
     const adsUpdate = req.body;
 
     if (req.file === undefined) {
-      adsUpdate.img = "no-photo.jpg";
+      adsUpdate.img = "no-photo.png";
     } else {
       const { fileName } = storeWithOriginalName(req.file);
       adsUpdate.img = fileName;
+      await jimpImage(fileName);
     }
+
+    const adsUpdated = await Ads.findOneAndUpdate({ _id: _id }, adsUpdate, {
+      new: true,
+      useFindAndModify: false,
+    });
+
+    res.send({
+      success: true,
+      result: adsUpdated,
+      msj: "Update successful",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/reserverads?", async (req, res, next) => {
+  try {
+    const _id = req.query.id;
+    const adsUpdate = req.body.ads;
 
     const adsUpdated = await Ads.findOneAndUpdate({ _id: _id }, adsUpdate, {
       new: true,
@@ -115,10 +140,11 @@ router.post("/createads?", async (req, res, next) => {
     const adsUpdate = req.body;
 
     if (req.file === undefined) {
-      adsUpdate.img = "no-photo.jpg";
+      adsUpdate.img = "no-photo.png";
     } else {
       const { fileName } = storeWithOriginalName(req.file);
       adsUpdate.img = fileName;
+      await jimpImage(fileName);
     }
 
     const ads = new Ads(adsUpdate);

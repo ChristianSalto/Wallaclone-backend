@@ -44,6 +44,7 @@ app.use("/recoverpass", require("./routes/recoverPass"));
 app.use("/newpass", require("./routes/recoverPass"));
 
 app.use("/adsview", require("./routes/adsView"));
+app.use("/listusers", require("./routes/listUsers"));
 app.use("/details", require("./routes/details"));
 app.use("/privatezone", type, jwtAuth(), require("./routes/privateZone"));
 
