@@ -4,6 +4,7 @@ const express = require("express");
 const router = express();
 
 const Ads = require("../models/Ads");
+const Imgs = require("../models/Imgs");
 const Users = require("../models/Users");
 const storeWithOriginalName = require("../middleware/storeWithOriginalName");
 const jimpImage = require("../middleware/jimpImage");
@@ -18,7 +19,7 @@ router.get("/", async (req, res, next) => {
       res.send({
         success: true,
         result: myAds,
-        msj: "No hay anuncios con este registro",
+        msj: "There are no ads with this register",
       });
       return;
     }
@@ -43,7 +44,7 @@ router.delete("/", async (req, res, next) => {
 
     res.send({
       success: true,
-      msj: "Usuario borrado",
+      msj: "Deleted user",
     });
   } catch (err) {
     next(err);
@@ -62,7 +63,7 @@ router.put("/", async (req, res, next) => {
     if (userExists !== null) {
       res.send({
         success: false,
-        msj: "Usuario o email ya registrados",
+        msj: "User or email already registered",
       });
       return;
     }
@@ -115,10 +116,19 @@ router.put("/editads?", async (req, res, next) => {
   }
 });
 
-router.put("/reserverads?", async (req, res, next) => {
+router.put("/statusads?", async (req, res, next) => {
   try {
     const _id = req.query.id;
     const adsUpdate = req.body.ads;
+
+    if (adsUpdate.status === "vendido") {
+      adsUpdate.img = "sold.jpeg";
+    } else if (adsUpdate.status === "reservado") {
+      adsUpdate.img = "reserved.jpg";
+    } else {
+      const nameImg = await Imgs.findOne({ _id: _id });
+      adsUpdate.img = nameImg.img;
+    }
 
     const adsUpdated = await Ads.findOneAndUpdate({ _id: _id }, adsUpdate, {
       new: true,
@@ -127,7 +137,7 @@ router.put("/reserverads?", async (req, res, next) => {
 
     res.send({
       success: true,
-      result: adsUpdated,
+      result: [adsUpdated],
       msj: "Update successful",
     });
   } catch (err) {
@@ -148,7 +158,14 @@ router.post("/createads?", async (req, res, next) => {
     }
 
     const ads = new Ads(adsUpdate);
+    const refImg = {
+      _id: ads._id,
+      img: ads.img,
+    };
+
     const adsSaved = await ads.save();
+    const imgs = new Imgs(refImg);
+    await imgs.save();
 
     res.send({
       success: true,
@@ -167,7 +184,7 @@ router.delete("/deleteads", async (req, res, next) => {
 
     res.send({
       success: true,
-      msj: "Anuncio borrado",
+      msj: "Deleted ad",
     });
   } catch (err) {
     next(err);

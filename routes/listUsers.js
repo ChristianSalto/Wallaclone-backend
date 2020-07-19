@@ -28,12 +28,13 @@ router.get("/ads", async (req, res, next) => {
     }
 
     const myAds = await Ads.list(filter, limit, sort);
+    
 
     if (myAds.length === 0) {
       res.send({
         success: true,
         result: myAds,
-        msj: "No hay anuncios con este registro",
+        msj: "There are no ads with this register",
       });
       return;
     }

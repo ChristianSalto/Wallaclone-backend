@@ -1,6 +1,6 @@
 [
   {
-    "img": "ps5.jpg",
+    "img": "no-photo.png",
     "name": "play staton 5",
     "tags": ["work"],
     "description": "Busco play 5 para estas navidades",
@@ -14,7 +14,7 @@
     "name": "camiseta real madrid",
     "tags": ["work", "mobile"],
     "description": "vendo camiseta del madrid",
-    "autor": "keko",
+    "autor": "chr",
     "date": "2020/01/01",
     "price": 59.99,
     "status": "vendo"
@@ -24,7 +24,7 @@
     "name": "ferrari",
     "tags": ["lifestyle"],
     "description": "ferrari de carreras",
-    "autor": "fernando alonso",
+    "autor": "chr",
     "date": "2019/12/24",
     "price": 1000000,
     "status": "vendo"
@@ -34,13 +34,13 @@
     "name": "seven wonder",
     "tags": ["lifestyle"],
     "description": "busco juego de mesa seven wonder",
-    "autor": "borja",
+    "autor": "chr",
     "date": "2018/02/15",
     "price": 30,
     "status": "busco"
   },
   {
-    "img": "ps5.jpg",
+    "img": "no-photo.png",
     "name": "play staton 5",
     "tags": ["work", "mobile", "lifestyle"],
     "description": "Busco play 5 para estas navidades",
@@ -54,7 +54,7 @@
     "name": "camiseta real madrid",
     "tags": ["lifestyle", "mobile"],
     "description": "vendo camiseta del madrid",
-    "autor": "keko",
+    "autor": "chr",
     "date": "2020/01/01",
     "price": 59.99,
     "status": "vendo"
@@ -64,7 +64,7 @@
     "name": "ferrari",
     "tags": ["motor"],
     "description": "ferrari de carreras",
-    "autor": "fernando alonso",
+    "autor": "chr",
     "date": "2019/12/24",
     "price": 1000000,
     "status": "vendo"
@@ -72,9 +72,9 @@
   {
     "img": "no-photo.png",
     "name": "seven wonder",
-    "tags": ["motor","work"],
+    "tags": ["motor", "work"],
     "description": "busco juego de mesa seven wonder",
-    "autor": "borja",
+    "autor": "chr",
     "date": "2018/02/15",
     "price": 30,
     "status": "busco"
