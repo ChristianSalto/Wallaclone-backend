@@ -34,20 +34,30 @@ router.post("/cart", async (req, res, next) => {
 
     if (!user) {
       const cart = new Cart(addCart);
-      const cartSaved = await cart.save();
-      console.log("if", cartSaved);
+      await cart.save();
     } else {
       const { _id } = addCart.adverts[0];
-      console.log(typeof _id, _id);
-      const ads = await Cart.findOne({ "adverts._id": _id });
+      const ads = await Cart.findOne({
+        username: addCart.username,
+        "adverts._id": _id,
+      });
       if (!ads) {
         await Cart.updateOne(
           { username: addCart.username },
           { $push: { adverts: addCart.adverts } }
         );
+      } else {
+        res.send({
+          success: false,
+          msj: "Already exists in your cart",
+        });
+        return;
       }
-      return;
     }
+    res.send({
+      success: true,
+      msj: "Successfully added",
+    });
   } catch (err) {
     next(err);
   }

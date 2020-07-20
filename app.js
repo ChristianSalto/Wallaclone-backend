@@ -47,6 +47,7 @@ app.use("/adsview", require("./routes/adsView"));
 app.use("/listusers", require("./routes/listUsers"));
 app.use("/details", require("./routes/details"));
 app.use("/privatezone", type, jwtAuth(), require("./routes/privateZone"));
+app.use("/cart", jwtAuth(), require("./routes/cart"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
