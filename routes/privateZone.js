@@ -6,6 +6,7 @@ const router = express();
 const Ads = require("../models/Ads");
 const Imgs = require("../models/Imgs");
 const Users = require("../models/Users");
+const Cart = require("../models/Cart");
 const storeWithOriginalName = require("../middleware/storeWithOriginalName");
 const jimpImage = require("../middleware/jimpImage");
 
@@ -41,6 +42,7 @@ router.delete("/", async (req, res, next) => {
 
     await Users.deleteOne({ _id: _id });
     await Ads.deleteOne({ autor: user });
+    await Cart.deleteOne({ username: user });
 
     res.send({
       success: true,

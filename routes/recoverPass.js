@@ -20,22 +20,25 @@ router.post("/", async (req, res, next) => {
     return;
   }
 
-  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-    expiresIn: "2d",
+  // const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+  //   expiresIn: "2d",
+  // });
+
+  // const recoverUser = {
+  //   success: true,
+  //   username: user.username,
+  //   email: user.email,
+  //   token: token,
+  // };
+
+  res.json({
+    success: true,
+    msj: "check your email if you received a message",
   });
 
-  const recoverUser = {
-    success: true,
-    username: user.username,
-    email: user.email,
-    token: token,
-  };
-
-  res.json(recoverUser);
-
   await Users.sendEmail(
-    "13126e50cd-85adef@inbox.mailtrap.io",
-    user.email,
+    "romeosaltovk@gmail.com",
+    "romeosaltovk@gmail.com",
     "Recover password",
     `
     <p>click 
@@ -54,7 +57,9 @@ router.put("/", async (req, res, next) => {
 
   if (!user) {
     res.send({ msj: "you must receive a gmail to change the password" });
+    return;
   }
+
   const resetPass = await Users.findOneAndUpdate(
     { _id: user._id },
     { password },
@@ -63,6 +68,8 @@ router.put("/", async (req, res, next) => {
       useFindAndModify: false,
     }
   );
+
+  app.set("email", null);
 
   res.send({
     success: true,

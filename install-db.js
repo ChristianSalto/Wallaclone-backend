@@ -4,6 +4,7 @@ const conn = require("./lib/connectMongoose");
 const Users = require("./models/Users");
 const Ads = require("./models/Ads");
 const Imgs = require("./models/Imgs");
+const Cart = require("./models/Cart");
 const adsJson = require("./ads.json");
 
 conn.once("open", async () => {
@@ -11,6 +12,7 @@ conn.once("open", async () => {
     await initUsers();
     await initAds();
     await initImgs();
+    await initCart();
     conn.close();
   } catch (err) {
     console.log("Hubo un error", err);
@@ -38,4 +40,12 @@ async function initImgs() {
   await Imgs.deleteMany();
   const refImg = await Ads.find({}, { _id: 1, img: 1 });
   await Imgs.insertMany(refImg);
+}
+
+async function initCart() {
+  await Cart.deleteMany();
+  await Cart.insertMany({
+    username: "chr",
+    adverts: [],
+  });
 }

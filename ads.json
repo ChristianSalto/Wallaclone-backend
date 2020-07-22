@@ -38,45 +38,5 @@
     "date": "2018/02/15",
     "price": 30,
     "status": "busco"
-  },
-  {
-    "img": "no-photo.png",
-    "name": "play staton 5",
-    "tags": ["work", "mobile", "lifestyle"],
-    "description": "Busco play 5 para estas navidades",
-    "autor": "chr",
-    "date": "2020/06/02",
-    "price": 400,
-    "status": "busco"
-  },
-  {
-    "img": "no-photo.png",
-    "name": "camiseta real madrid",
-    "tags": ["lifestyle", "mobile"],
-    "description": "vendo camiseta del madrid",
-    "autor": "chr",
-    "date": "2020/01/01",
-    "price": 59.99,
-    "status": "vendo"
-  },
-  {
-    "img": "no-photo.png",
-    "name": "ferrari",
-    "tags": ["motor"],
-    "description": "ferrari de carreras",
-    "autor": "chr",
-    "date": "2019/12/24",
-    "price": 1000000,
-    "status": "vendo"
-  },
-  {
-    "img": "no-photo.png",
-    "name": "seven wonder",
-    "tags": ["motor", "work"],
-    "description": "busco juego de mesa seven wonder",
-    "autor": "chr",
-    "date": "2018/02/15",
-    "price": 30,
-    "status": "busco"
   }
 ]
