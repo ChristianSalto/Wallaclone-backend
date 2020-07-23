@@ -8,7 +8,9 @@ router.get("/", async (req, res, next) => {
   try {
     const users = await Users.find();
     const names = users.map((name) => name.username);
-    res.send({ result: names });
+    res.send({
+      result: names,
+    });
   } catch (err) {
     next(err);
   }
@@ -28,7 +30,6 @@ router.get("/ads", async (req, res, next) => {
     }
 
     const myAds = await Ads.list(filter, limit, sort);
-    
 
     if (myAds.length === 0) {
       res.send({
