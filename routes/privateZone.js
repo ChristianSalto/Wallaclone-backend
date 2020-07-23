@@ -10,6 +10,7 @@ const Cart = require("../models/Cart");
 const storeWithOriginalName = require("../middleware/storeWithOriginalName");
 const jimpImage = require("../middleware/jimpImage");
 
+
 router.get("/", async (req, res, next) => {
   try {
     const autor = req.query.autor;
@@ -57,6 +58,8 @@ router.put("/", async (req, res, next) => {
   try {
     const _id = req.body.id;
     const userUpdate = req.body.params;
+
+
 
     const userExists = await Users.findOne({
       $or: [{ email: userUpdate.email }, { username: userUpdate.username }],

@@ -6,10 +6,14 @@ const bcrypt = require("bcrypt");
 const Users = require("../models/Users");
 const jwt = require("jsonwebtoken");
 
+
+
 router.post("/", async (req, res, next) => {
   try {
     const username = req.body.username;
     const password = req.body.password;
+
+    
 
     const user = await Users.findOne({ username: username });
     // console.log(user);
