@@ -33,6 +33,8 @@ const jwtAuth = require("./middleware/jwtAuth");
  * Rutas del api
  */
 
+app.use("/api/adverts", require("./routes/api/adverts"));
+
 /**
  * Rutas del website
  */

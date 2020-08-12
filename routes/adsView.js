@@ -13,6 +13,8 @@ router.get("/", async (req, res, next) => {
     const filter = {};
     const sort = {};
 
+    console.log(req.query.params)
+
     if (name !== "") {
       filter.name = new RegExp(`^${name}`, "i");
     }
